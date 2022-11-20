@@ -120,7 +120,7 @@ dependencies {
         }
     }
     implementation(kotlin("stdlib-jdk8"))
-    testImplementation(libs.junit)
+    testImplementation(kotlin("test"))
 }
 
 // ------------------------------------------------------------------------------------------------------------------ //
@@ -196,6 +196,10 @@ runtime {
 
 tasks.register<org.openrndr.extra.gitarchiver.GitArchiveToMarkdown>("gitArchiveToMarkDown") {
     historySize.set(20)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 // ------------------------------------------------------------------------------------------------------------------ //
