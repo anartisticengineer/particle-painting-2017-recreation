@@ -15,12 +15,12 @@ fun main() = application {
         val yScales = listOf(0.0, 0.25, 0.5, 0.75)
         val particleSystems = yScales.map { scl ->  ParticleSystem(drawer.bounds, scl)}
         val particleColor = ColorRGBa.NAVAJO_WHITE
-
+        backgroundColor = ColorRGBa.BLACK
+        extend(NoClear())
         extend(Screenshots()){
             contentScale = 4.0
             quitAfterScreenshot = true
         }
-        extend(NoClear())
         extend {
             drawer.fill = particleColor
             drawer.stroke = null
@@ -31,7 +31,13 @@ fun main() = application {
                     particleSystem.addNewParticle()
                 }
                 particleSystem.updateParticles()
-                drawer.circles(particleSystem.allParticlePositions, particleSystem.allParticleSizes)
+                drawer.points {
+                    val numParticles = particleSystem.numParticles
+                    repeat(numParticles){
+                        fill = particleColor.shade(particleSystem.allParticleShades[it])
+                        point(particleSystem.allParticlePositions[it])
+                    }
+                }
             }
         }
     }
