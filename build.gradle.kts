@@ -120,6 +120,7 @@ dependencies {
         }
     }
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.openrndr.extra:orx-no-clear:0.3.57")
     testImplementation(kotlin("test"))
 }
 
