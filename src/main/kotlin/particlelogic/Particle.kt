@@ -9,7 +9,7 @@ class Particle(initialPosition: Vector2) {
     private var velocity = Vector2.ZERO
     private val acceleration = Vector2(0.0, random(0.01, 0.05))
     private val step = random(0.01, 0.05)
-    var isDead = false
+    val isDead
         get() = lifespan > 1.0
 
     fun update(){

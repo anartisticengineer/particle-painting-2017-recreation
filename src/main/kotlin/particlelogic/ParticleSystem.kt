@@ -6,10 +6,10 @@ import org.openrndr.shape.Rectangle
 class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0) {
     private val cursor = Cursor(boundRectangle, yScale)
     private var particles = mutableListOf<Particle>()
-    var allParticlePositions = listOf<Vector2>()
+    val allParticlePositions
         get() = particles.map { particle -> particle.position }
 
-    var allParticleSizes = listOf<Double>()
+    val allParticleSizes
         get() = particles.map { particle -> (1.0 - particle.lifespan) * 2.0 }
 
     fun updateCursor(t: Double){
