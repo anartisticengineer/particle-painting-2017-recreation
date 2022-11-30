@@ -1,18 +1,14 @@
 package particlelogic
 
 import org.openrndr.math.Vector2
-import org.openrndr.math.map
 import org.openrndr.shape.Rectangle
 
 class Cursor(private var boundRectangle: Rectangle, private var yScale: Double = 0.0) {
     private val tMax = 100.0
-    private val paddedBounds = boundRectangle.scaledBy(80.0)
-    private val xBoundRange = 0.0.rangeTo(paddedBounds.width)
-    private val tRange = 0.0.rangeTo(tMax)
-    var position = Vector2.ZERO
+    var position = Vector2.ZERO.copy(y = boundRectangle.height * yScale)
 
     fun setPositionByTime(t: Double){
-        val newX = map(tRange, xBoundRange, t/tMax, true)
+        val newX = (t / tMax) * boundRectangle.width
         position = Vector2(newX, boundRectangle.height * yScale)
     }
 }

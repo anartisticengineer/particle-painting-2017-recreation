@@ -13,7 +13,8 @@ fun main() = application {
     }
     program {
         val yScales = listOf(0.0, 0.25, 0.5, 0.75)
-        val particleSystems = yScales.map { scl ->  ParticleSystem(drawer.bounds, scl)}
+        val particleSystemArea = drawer.bounds.offsetEdges(drawer.width * -0.1, drawer.height * -0.1)
+        val particleSystems = yScales.map { scl ->  ParticleSystem(particleSystemArea, scl)}
         val particleColor = ColorRGBa.NAVAJO_WHITE
         backgroundColor = ColorRGBa.BLACK
         extend(NoClear())
@@ -23,7 +24,6 @@ fun main() = application {
         }
         extend {
             drawer.fill = particleColor
-            drawer.stroke = null
             drawer.translate(Vector2(width * 0.1, height * 0.1))
             particleSystems.forEach { particleSystem ->
                 if (frameCount % 5 == 0 && seconds <= 100.0){

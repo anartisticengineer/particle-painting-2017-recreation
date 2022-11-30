@@ -1,6 +1,5 @@
 package particlelogic
 
-import org.openrndr.math.Vector2
 import org.openrndr.shape.Rectangle
 
 class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0) {
