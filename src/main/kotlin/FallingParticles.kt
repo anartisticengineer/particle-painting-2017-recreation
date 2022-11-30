@@ -1,7 +1,6 @@
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.extensions.Screenshots
-import org.openrndr.extra.color.presets.NAVAJO_WHITE
 import org.openrndr.extra.noclear.NoClear
 import org.openrndr.math.Vector2
 import particlelogic.ParticleSystem
@@ -15,7 +14,6 @@ fun main() = application {
         val yScales = listOf(0.0, 0.25, 0.5, 0.75)
         val particleSystemArea = drawer.bounds.offsetEdges(drawer.width * -0.1, drawer.height * -0.1)
         val particleSystems = yScales.map { scl ->  ParticleSystem(particleSystemArea, scl)}
-        val particleColor = ColorRGBa.NAVAJO_WHITE
         backgroundColor = ColorRGBa.BLACK
         extend(NoClear())
         extend(Screenshots()){
@@ -23,7 +21,6 @@ fun main() = application {
             quitAfterScreenshot = true
         }
         extend {
-            drawer.fill = particleColor
             drawer.translate(Vector2(width * 0.1, height * 0.1))
             particleSystems.forEach { particleSystem ->
                 if (frameCount % 5 == 0 && seconds <= 100.0){
@@ -34,7 +31,8 @@ fun main() = application {
                 drawer.points {
                     val numParticles = particleSystem.numParticles
                     repeat(numParticles){
-                        fill = particleColor.shade(particleSystem.allParticleShades[it])
+                        val currentColor = particleSystem.allParticleColors[it]
+                        fill = currentColor.shade(particleSystem.allParticleShades[it])
                         point(particleSystem.allParticlePositions[it])
                     }
                 }

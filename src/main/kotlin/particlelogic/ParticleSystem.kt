@@ -10,6 +10,9 @@ class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0) {
     val allParticlePositions
         get() = particles.map { particle -> particle.position }
 
+    val allParticleColors
+        get() = particles.map { particle -> particle.particleColor }
+
     val allParticleShades
         get() = particles.map { particle -> (1.0 - particle.lifespan) }
 
