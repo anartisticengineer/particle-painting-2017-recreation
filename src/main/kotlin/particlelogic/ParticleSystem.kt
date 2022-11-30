@@ -2,8 +2,8 @@ package particlelogic
 
 import org.openrndr.shape.Rectangle
 
-class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0) {
-    private val cursor = Cursor(boundRectangle, yScale)
+class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0, maxTime: Double = 100.0) {
+    private val cursor = Cursor(boundRectangle, yScale, maxTime)
     private var particles = mutableListOf<Particle>()
     val numParticles
         get() = particles.size
