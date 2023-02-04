@@ -8,13 +8,13 @@ class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0, maxTime: D
     val numParticles
         get() = particles.size
     val allParticlePositions
-        get() = particles.map { particle -> particle.position }
+        get() = particles.map { it.position }
 
     val allParticleColors
-        get() = particles.map { particle -> particle.particleColor }
+        get() = particles.map { it.particleColor }
 
     val allParticleShades
-        get() = particles.map { particle -> (1.0 - particle.lifespan) }
+        get() = particles.map { (1.0 - it.lifespan) }
 
     fun updateCursor(t: Double){
         cursor.setPositionByTime(t)
@@ -26,6 +26,6 @@ class ParticleSystem(boundRectangle: Rectangle, yScale: Double = 0.0, maxTime: D
 
     fun updateParticles(){
         particles.forEach { particle ->  particle.update() }
-        particles = particles.filterNot { particle -> particle.isDead } as MutableList<Particle>
+        particles = particles.filterNot { it.isDead } as MutableList<Particle>
     }
 }

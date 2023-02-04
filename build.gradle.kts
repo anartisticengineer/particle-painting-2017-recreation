@@ -35,7 +35,7 @@ val orxFeatures = setOf<String>(
 //  "orx-mesh-generators",
 //  "orx-midi",
 //  "orx-minim",
-//  "orx-no-clear",
+  "orx-no-clear",
     "orx-noise",
 //  "orx-obj-loader",
     "orx-olive",
@@ -120,7 +120,7 @@ dependencies {
         }
     }
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.openrndr.extra:orx-no-clear:0.3.57")
+//    implementation("org.openrndr.extra:orx-no-clear:0.3.57")
     testImplementation(kotlin("test"))
 }
 

@@ -12,14 +12,13 @@ fun main() = application {
     }
     program {
         val maxNumSeconds = 200.0
-        val yScales = listOf(0.0, 0.25, 0.5, 0.75)
+        val yScales = listOf(0.0, 0.2, 0.4, 0.6, 0.8)
         val particleSystemArea = drawer.bounds.offsetEdges(drawer.width * -0.1, drawer.height * -0.1)
-        val particleSystems = yScales.map { scl ->  ParticleSystem(particleSystemArea, scl, maxNumSeconds)}
+        val particleSystems = yScales.map { ParticleSystem(particleSystemArea, it, maxNumSeconds)}
         backgroundColor = ColorRGBa.BLACK
         extend(NoClear())
         extend(Screenshots()){
             contentScale = 4.0
-            quitAfterScreenshot = true
         }
         extend {
             drawer.translate(Vector2(width * 0.1, height * 0.1))
